@@ -1,10 +1,14 @@
 package com.ibm.cars.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ibm.cars.Entity.CanAddMcnEntity;
+import com.ibm.cars.Entity.PreUploadAnnrt;
+import com.ibm.cars.dao.AnnualRateDao;
 import com.ibm.cars.service.McnService;
 import com.ibm.cars.utility.CommonUtilityFile;
 /**
@@ -20,6 +24,10 @@ public class McnServiceImpl implements McnService {
 	
 	@Autowired
 	CommonUtilityFile commonUtilityFile ;
+	
+	@Autowired
+	AnnualRateDao annualRateDao;
+	
 
 	@Override
 	public CanAddMcnEntity canAddMCN(CanAddMcnEntity entity) {
@@ -39,6 +47,12 @@ public class McnServiceImpl implements McnService {
 		
 		 
 		return entity;
+	}
+
+	@Override
+	public  List<PreUploadAnnrt>  preUpldAudit(String mcn) {
+		// TODO Auto-generated method stub
+		return annualRateDao.getMcn(mcn);
 	}
 
 }
