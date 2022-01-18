@@ -3,12 +3,11 @@
  */
 package com.ibm.cars.Repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.ibm.cars.Entity.PreUploadAnnrt;
+import com.ibm.cars.bean.PreUpldAuditRequestBean;
 
 /**
  * @author 002SUJ744
@@ -16,9 +15,5 @@ import com.ibm.cars.Entity.PreUploadAnnrt;
  */
 @Repository
 public interface AnnualRateRepository extends JpaRepository<PreUploadAnnrt,String> {
-
-	/**
-	 * 
-	 */
 
 }
