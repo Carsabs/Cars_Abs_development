@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ibm.cars.Entity.PreUploadAnnrt;
 import com.ibm.cars.Repository.AnnualRateRepository;
+import com.ibm.cars.bean.PreUpldAuditRequestBean;
 import com.ibm.cars.dao.AnnualRateDao;
 import com.ibm.cars.utility.CommonUtilityFile;
 
@@ -21,6 +22,8 @@ public class AddRatesDaoImpl implements AnnualRateDao {
 
 	@Autowired
 	AnnualRateRepository repository;
+	
+
 	
 	@Autowired
 	CommonUtilityFile commonUtilityFile ;
@@ -47,6 +50,17 @@ public class AddRatesDaoImpl implements AnnualRateDao {
 			throw new Exception(commonUtilityFile.mcnDataError());
 		}
 		return mcnArray; 
+	}
+
+	@Override
+	public void savePreUploadAnnrt(PreUploadAnnrt preupload) throws Exception {
+		// TODO Auto-generated method stub
+		repository.save(preupload);
+		
+	}
+	@Override
+	public void deleteMcn(String mcn)throws Exception{
+		repository.deleteById(mcn);
 	}
 		
 }
