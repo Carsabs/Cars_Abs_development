@@ -21,5 +21,8 @@ public class CommonUtilityFile{
     public  String  mcn_valid() {
         return env.getProperty("mcn_valid");
       }
-	
+	public String mcnDataError() {
+		return env.getProperty("mcn_no_data_found");
+	}
+    
 }

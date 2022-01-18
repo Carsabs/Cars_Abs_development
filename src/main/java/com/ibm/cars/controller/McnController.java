@@ -43,10 +43,13 @@ public class McnController {
 	}
 	@GetMapping("pre_upld_audit")
 	public ResponseEntity<List<PreUploadAnnrt>> preUpldAudit(@RequestParam(value="mcn", required=true) String mcn) {
-		List<PreUploadAnnrt> mcnData=	mcnService.preUpldAudit(mcn);
-		if(mcnData.isEmpty()) {
-			throw new DataNotFound("No data found for the requested MCN's");
-		}
+		List<PreUploadAnnrt> mcnData;
+		try {
+			mcnData = mcnService.preUpldAudit(mcn);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw new DataNotFound(e.getMessage());
+		}	
 		return ResponseEntity.ok(mcnData);
 
 	}

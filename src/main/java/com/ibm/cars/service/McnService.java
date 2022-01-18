@@ -13,7 +13,7 @@ public interface McnService {
 
 	public CanAddMcnEntity canAddMCN(CanAddMcnEntity canaddMcn);
 
-	public List<PreUploadAnnrt> preUpldAudit(String mcn);
+	public List<PreUploadAnnrt> preUpldAudit(String mcn) throws Exception;
 
 
 
