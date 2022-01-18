@@ -50,7 +50,7 @@ public class McnServiceImpl implements McnService {
 	}
 
 	@Override
-	public  List<PreUploadAnnrt>  preUpldAudit(String mcn) {
+	public  List<PreUploadAnnrt>  preUpldAudit(String mcn) throws Exception {
 		// TODO Auto-generated method stub
 		return annualRateDao.getMcn(mcn);
 	}

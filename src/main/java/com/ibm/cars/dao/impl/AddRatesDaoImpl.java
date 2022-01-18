@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.ibm.cars.Entity.PreUploadAnnrt;
 import com.ibm.cars.Repository.AnnualRateRepository;
 import com.ibm.cars.dao.AnnualRateDao;
+import com.ibm.cars.utility.CommonUtilityFile;
 
 /**
  * @author 002SUJ744
@@ -21,6 +22,9 @@ public class AddRatesDaoImpl implements AnnualRateDao {
 	@Autowired
 	AnnualRateRepository repository;
 	
+	@Autowired
+	CommonUtilityFile commonUtilityFile ;
+	
 	public AddRatesDaoImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -29,18 +33,18 @@ public class AddRatesDaoImpl implements AnnualRateDao {
 	return	repository.findAll();	
 	}
 //	This method is used to get the mcn data from pre_upload_annrt table 
-	public List<PreUploadAnnrt> getMcn(String mcn){	
+	public List<PreUploadAnnrt> getMcn(String mcn) throws Exception{	
 		Optional<PreUploadAnnrt> mcnData;
 		List<PreUploadAnnrt> mcnArray = new ArrayList<PreUploadAnnrt>();
 		try {
 		mcnData = repository.findById(mcn);
 		System.out.println("the data -->"+mcnData);
 		if(mcnData.isEmpty()) {
-			// throw error message
+			throw new Exception(commonUtilityFile.mcnDataError());
 		}
 		mcnArray.add(mcnData.get());
 		}catch (Exception e) {
-			//throw error message
+			throw new Exception(commonUtilityFile.mcnDataError());
 		}
 		return mcnArray; 
 	}
